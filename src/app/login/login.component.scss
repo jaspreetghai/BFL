@@ -1,0 +1,93 @@
+.login-wrapper {
+  align-items: center;
+  background: url("../../assets/images/login-bg.jpg") no-repeat #ccc;
+  background-size: cover;
+  background-attachment: fixed;
+  background-origin: border-box;
+  background-clip: padding-box;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+
+  .login-card {
+    max-width: 400px;
+    opacity: 0.8;
+    width: 90%;
+    height: 100%;
+    position: absolute;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+
+    mat-form-field {
+      width: 100%;
+    }
+
+    .align-center {
+      text-align: center;
+    }
+
+    .arrow-back {
+      color: #673ab7;
+      vertical-align: middle;
+      cursor: pointer;
+    }
+
+    .login-container {
+      ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+        background: transparent !important;
+      }
+    }
+
+    .login-btn {
+      width: 100%;
+      margin: auto;
+      margin-bottom: 10px;
+    }
+
+    .google-logo {
+      height: 25px;
+    }
+
+    .option-text {
+      padding-top: 16px;
+
+      .sign-up {
+        float: right;
+      }
+    }
+  }
+
+  .flipper {
+    position: relative;
+    width: 70%;
+    max-width: 400px;
+    height: 90%;
+    max-height: 375px;
+    margin: 3rem auto;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform: transform 1s;
+    -ms-transform: transform 1s;
+    transform: transform 1s;
+
+    .sign-in {
+      -webkit-transform: rotateY(0deg);
+      -ms-transform: rotateY(0deg);
+      transform: rotateY(0deg);
+    }
+
+    .sign-up {
+      -webkit-transform: rotateY(-180deg);
+      -ms-transform: rotateY(-180deg);
+      transform: rotateY(-180deg);
+
+      .sign-up-title {
+        margin-left: 20px;
+      }
+
+      .sign-up-option {
+        float: right;
+      }
+    }
+  }
+}
