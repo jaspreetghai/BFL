@@ -9,25 +9,31 @@
           <mat-form-field class="example-full-width">
             <mat-label>Email</mat-label>
             <input matInput type="email" formControlName="email" />
-            <mat-error *ngIf="f.email.errors?.required"
-              >Email is required</mat-error
-            >
-            <mat-error *ngIf="f.email.errors?.email"
-              >Email must be a valid email address</mat-error
-            >
+            <mat-error *ngIf="signIn.email.invalid">{{
+              getErrorMessage("loginForm", "email")
+            }}</mat-error>
           </mat-form-field>
           <mat-form-field class="example-full-width">
             <mat-label>Password</mat-label>
-            <input matInput type="password" formControlName="password" />
-            <mat-error *ngIf="f.password.errors?.required"
-              >Password is required</mat-error
+            <input
+              matInput
+              [type]="signInPassword ? 'password' : 'text'"
+              formControlName="password"
+            />
+            <button
+              mat-icon-button
+              matSuffix
+              (click)="signInPassword = !signInPassword"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="signInPassword"
             >
-            <mat-error
-              *ngIf="
-                f.password.errors?.minlength || f.password.errors?.maxlength
-              "
-              >Password should be 8-15 characters long</mat-error
-            >
+              <mat-icon>{{
+                signInPassword ? "visibility_off" : "visibility"
+              }}</mat-icon>
+            </button>
+            <mat-error *ngIf="signIn.password.invalid">{{
+              getErrorMessage("loginForm", "password")
+            }}</mat-error>
           </mat-form-field>
         </mat-card-content>
       </form>
@@ -101,9 +107,9 @@
             <mat-form-field class="example-full-width">
               <mat-label>Name</mat-label>
               <input matInput formControlName="name" />
-              <mat-error *ngIf="signUp.name.errors?.required"
-                >Name is required</mat-error
-              >
+              <mat-error *ngIf="signUp.name.invalid">{{
+                getErrorMessage("signUpForm", "name")
+              }}</mat-error>
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
@@ -114,33 +120,39 @@
                 [for]="picker"
               ></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
-              <mat-error *ngIf="signUp.dob.errors?.required"
-                >DOB is required</mat-error
-              >
+              <mat-error *ngIf="signUp.dob.invalid">{{
+                getErrorMessage("signUpForm", "dob")
+              }}</mat-error>
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
               <mat-label>Email</mat-label>
               <input matInput type="email" formControlName="email" />
-              <mat-error *ngIf="signUp.email.errors?.required"
-                >Email is required</mat-error
-              >
-              <mat-error *ngIf="f.email.errors?.email"
-                >Email must be a valid email address</mat-error
-              >
+              <mat-error *ngIf="signUp.email.invalid">{{
+                getErrorMessage("signUpForm", "email")
+              }}</mat-error>
             </mat-form-field>
             <mat-form-field class="example-full-width">
               <mat-label>Password</mat-label>
-              <input matInput type="password" formControlName="password" />
-              <mat-error *ngIf="signUp.pwd.errors?.required"
-                >Password is required</mat-error
+              <input
+                matInput
+                [type]="signUpPassword ? 'password' : 'text'"
+                formControlName="password"
+              />
+              <button
+                mat-icon-button
+                matSuffix
+                (click)="signUpPassword = !signUpPassword"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="signUpPassword"
               >
-              <mat-error
-                *ngIf="
-                  signUp.pwd.errors?.minlength || signUp.pwd.errors?.maxlength
-                "
-                >Password should be 8-15 characters long</mat-error
-              >
+                <mat-icon>{{
+                  signUpPassword ? "visibility_off" : "visibility"
+                }}</mat-icon>
+              </button>
+              <mat-error *ngIf="signUp.password.invalid">{{
+                getErrorMessage("signUpForm", "password")
+              }}</mat-error>
             </mat-form-field>
           </div>
         </mat-card-content>

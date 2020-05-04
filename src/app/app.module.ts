@@ -21,19 +21,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './services/auth.service';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MainLayoutComponent } from './main-layout/main-layout.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    DashboardComponent,
     NotFoundComponent,
     LoginComponent,
+    MainLayoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,6 +54,9 @@ import { AuthService } from './services/auth.service';
     MatDatepickerModule,
     MatNativeDateModule,
     MatToolbarModule,
+    MatMenuModule,
+    MatSidenavModule,
+    MatTabsModule,
     AngularFireModule.initializeApp(environment.firebase),
   ],
   providers: [AuthService],

@@ -49,6 +49,9 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   signUpForm: FormGroup;
   submitted = false;
+  signUpPassword = true;
+  signInPassword = true;
+
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       email: [null, [Validators.required, Validators.email]],
@@ -65,7 +68,7 @@ export class LoginComponent implements OnInit {
       name: [null, [Validators.required]],
       dob: [null, [Validators.required]],
       email: [null, [Validators.required, Validators.email]],
-      pwd: [
+      password: [
         null,
         [
           Validators.required,
@@ -74,16 +77,11 @@ export class LoginComponent implements OnInit {
         ],
       ],
     });
-    console.log(this.loginForm);
-    console.log(this.signUpForm);
   }
 
   flip: string = 'inactive';
 
   toggleFlip() {
-    console.log(this.loginForm);
-    console.log(this.signUpForm);
-
     this.flip = this.flip == 'inactive' ? 'active' : 'inactive';
   }
 
@@ -97,11 +95,39 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['dashboard']);
   }
 
-  get f() {
+  get signIn() {
     return this.loginForm.controls;
   }
 
   get signUp() {
     return this.signUpForm.controls;
+  }
+
+  getErrorMessage(form, elem) {
+    if (elem == 'email') {
+      if (this[form].controls[elem].hasError('required')) {
+        return 'You must enter a value';
+      } else if (this[form].controls[elem].hasError('email')) {
+        return 'Enter valid email';
+      }
+    } else if (elem == 'password') {
+      if (this[form].controls[elem].hasError('minlength')) {
+        return 'Password should be 8-15 characters long';
+      } else if (this[form].controls[elem].hasError('maxlength')) {
+        return 'Password should be 8-15 characters long';
+      } else if (this[form].controls[elem].hasError('required')) {
+        return 'You must enter a value';
+      }
+    }
+    if (elem == 'dob') {
+      if (this[form].controls[elem].hasError('required')) {
+        return 'You must enter a proper value';
+      }
+      if (this[form].controls[elem].hasError('invalid')) {
+        return 'You must enter a date';
+      }
+    } else if (this[form].controls[elem].hasError('required')) {
+      return 'You must enter a value';
+    }
   }
 }

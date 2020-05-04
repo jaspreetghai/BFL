@@ -1,17 +1,20 @@
+@import "src/theme/app-theme";
+
 .login-wrapper {
   align-items: center;
-  background: url("../../assets/images/login-bg.jpg") no-repeat #ccc;
-  background-size: cover;
-  background-attachment: fixed;
-  background-origin: border-box;
-  background-clip: padding-box;
+  // background: url("../../assets/images/login-bg.jpg") no-repeat #ccc;
+  // background-size: cover;
+  // background-attachment: fixed;
+  // background-origin: border-box;
+  // background-clip: padding-box;
+  background-color: $primary;
   display: flex;
   height: 100vh;
   justify-content: center;
 
   .login-card {
     max-width: 400px;
-    opacity: 0.8;
+    // opacity: 0.8;
     width: 90%;
     height: 100%;
     position: absolute;

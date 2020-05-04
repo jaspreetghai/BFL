@@ -1,7 +1,45 @@
+@import "src/theme/app-theme.scss";
 .example-icon {
   padding: 0 14px;
 }
 
 .example-spacer {
   flex: 1 1 auto;
+}
+
+.header-bg {
+  background: $accent;
+  padding: 5px;
+
+  .logo {
+    border: 4px solid;
+    padding: 15px;
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 7px;
+  }
+
+  .nav-link {
+    color: $primary;
+  }
+
+  .dropdown:hover > .dropdown-menu {
+    display: block;
+  }
+
+  .dropdown:hover {
+    .nav-link {
+      border-bottom: solid 2px #c99947;
+      transition: border 0.1s linear;
+    }
+  }
+
+  .dropdown > .dropdown-toggle:active {
+    /*Without this, clicking will make it sticky*/
+    pointer-events: none;
+  }
+
+  .active-link {
+    border-bottom: 2px solid #c99947;
+  }
 }
